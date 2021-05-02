@@ -229,7 +229,7 @@ bool TCalendario::operator > (const TCalendario& tcalendario) const{
     if(mensaje!=NULL && tcalendario.mensaje==NULL){
       ret=true;
     }if(mensaje!=NULL && tcalendario.mensaje!=NULL){
-      if(strlen(mensaje)>=strlen(tcalendario.mensaje)){
+      if(strlen(mensaje)>strlen(tcalendario.mensaje)){
         ret=true;
       }
     }

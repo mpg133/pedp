@@ -27,7 +27,7 @@ private:
     // Destructor
     ~TVectorCalendario();
     // Sobrecarga del operador asignación
-    TVectorCalendario & operator=(TVectorCalendario &);
+    TVectorCalendario & operator=(const TVectorCalendario &);
     // Sobrecarga del operador igualdad
     bool operator==(const TVectorCalendario &);
     // Sobrecarga del operador desigualdad

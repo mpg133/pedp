@@ -40,10 +40,6 @@ bool TVectorCalendario::isLeap(int year){
 bool TVectorCalendario::CheckDate(int dia,int mes,int anyo){
   bool ret=false;//variable that return if date is correct or not
 
-
-
-
-
   //check the date
   if(0<mes && mes<13 && 0<dia && dia<32 && anyo>=2000 && anyo<=2100){
       //mess 4,6,9,11 have 30 days
@@ -110,21 +106,24 @@ TVectorCalendario::TVectorCalendario(const TVectorCalendario &newVec){
 }
 // Sobrecarga del operador igualdad
 bool TVectorCalendario::operator==(const TVectorCalendario &newVec){
+ bool ret=false;
 
   if(tamano==newVec.tamano){//mismo tam
     for(int i=1;i<=tamano;i++){
-      if(c[i-1]!=newVec.c[i]){
+      if(c[i-1]==newVec.c[i-1]){
+        
+        ret= true;
+      }else{
         return false;
       }
     }
-  }else{
-    return false;
   }
 
-return true;
+return ret;
 }
 // Sobrecarga del operador desigualdad
 bool TVectorCalendario::operator!=(const TVectorCalendario &newVec){
+  
   if(*this==newVec){
     return false;
   }else{
@@ -135,7 +134,6 @@ bool TVectorCalendario::operator!=(const TVectorCalendario &newVec){
 // Sobrecarga del operador corchete (parte IZQUIERDA)
 //modificas v[10]=a;
 TCalendario & TVectorCalendario::operator[](const int pos){
-
     if(pos>0 && pos<=tamano){
       return c[pos-1];
 
@@ -148,9 +146,8 @@ TCalendario & TVectorCalendario::operator[](const int pos){
 // Sobrecarga del operador corchete (parte DERECHA)
 //no modificas V[10] + V[11]
 TCalendario TVectorCalendario::operator[](const int pos) const{
-
+  
       if(pos>0 && pos<=tamano){
-
           return c[pos-1];
       }else{
 
@@ -172,13 +169,13 @@ return ocupadas;
 
 }
 // Sobrecarga del operador asignación
-TVectorCalendario & TVectorCalendario::operator=(TVectorCalendario &newVec){
+TVectorCalendario & TVectorCalendario::operator=( const TVectorCalendario &newVec){
 
-
+    
           //se destruye vector inicial
-           //this->~TVectorCalendario();
+          //this->~TVectorCalendario();
           tamano=newVec.tamano;
-
+         // cout<<tamano<<endl;
            if(newVec.tamano>0){
               c  = new TCalendario[tamano];
              for(int i = 0;i <tamano; i++){
